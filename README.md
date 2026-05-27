@@ -8,7 +8,7 @@
     a terminal that knows where you are
     <br />
     The CLI is powerful. But windows pile up, state gets lost, and nothing talks to each other.
-    <code>iris<code/> fixes that, without the chaos of tmux, without the friction of a full IDE.
+    <code>iris</code> fixes that, without the chaos of tmux, without the friction of a full IDE.
     <br />
     <a href="#the-idea">About</a>
     ·
