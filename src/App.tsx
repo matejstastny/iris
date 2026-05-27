@@ -1,7 +1,8 @@
 import './styles/main.css';
+import TerminalView from './Terminal';
 
 function App() {
-    return <div className="terminal">Hello</div>;
+    return <TerminalView />;
 }
 
 export default App;
