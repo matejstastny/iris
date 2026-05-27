@@ -18,16 +18,18 @@ function TerminalView() {
 
         invoke('start_shell');
 
-        const unlisten = listen<string>('shell-output', (event) => {
+        const unlistenPromise = listen<string>('shell-output', (event) => {
             term.write(event.payload);
         });
+
+        unlistenPromise.then(() => invoke('start_shell'));
 
         term.onData((data) => {
             invoke('write_to_shell', { data });
         });
 
         return () => {
-            unlisten.then((f) => f());
+            unlistenPromise.then((f) => f());
             term.dispose();
         };
     }, []);

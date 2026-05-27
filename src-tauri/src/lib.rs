@@ -9,6 +9,9 @@ struct ShellState {
 
 #[tauri::command]
 fn start_shell(state: State<ShellState>, app: AppHandle) {
+    if state.writer.lock().unwrap().is_some() {
+        return;
+    }
     let pty_system = native_pty_system();
 
     let pty_pair = pty_system
@@ -20,7 +23,9 @@ fn start_shell(state: State<ShellState>, app: AppHandle) {
         })
         .expect("failed to open pty");
 
-    let cmd = CommandBuilder::new("bash");
+    let shell = std::env::var("SHELL").unwrap_or_else(|_| "/bin/bash".to_string());
+
+    let cmd = CommandBuilder::new(shell);
     pty_pair
         .slave
         .spawn_command(cmd)
