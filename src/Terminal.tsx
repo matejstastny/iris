@@ -9,7 +9,10 @@ function TerminalView() {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const term = new Terminal();
+        const term = new Terminal({
+            fontFamily: '"DankMono Nerd Font Mono", monospace',
+            fontSize: 14,
+        });
         const fitAddon = new FitAddon();
 
         term.loadAddon(fitAddon);
