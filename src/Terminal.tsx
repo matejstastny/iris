@@ -19,19 +19,26 @@ function TerminalView() {
         term.open(containerRef.current!);
         fitAddon.fit();
 
-        invoke('start_shell');
-
+        const { cols, rows } = term;
         const unlistenPromise = listen<string>('shell-output', (event) => {
             term.write(event.payload);
         });
 
-        unlistenPromise.then(() => invoke('start_shell'));
+        unlistenPromise.then(() => invoke('start_shell', { cols, rows }));
+
+        const handleResize = () => fitAddon.fit();
+        window.addEventListener('resize', handleResize);
+
+        term.onResize(({ cols, rows }) => {
+            invoke('resize_shell', { cols, rows });
+        });
 
         term.onData((data) => {
             invoke('write_to_shell', { data });
         });
 
         return () => {
+            window.removeEventListener('resize', handleResize);
             unlistenPromise.then((f) => f());
             term.dispose();
         };
