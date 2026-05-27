@@ -35,12 +35,12 @@ I live in multiple projects at once - robotics, school, personal. Switching cont
 
 ## `built with`
 
-| layer    | tech               |
-| -------- | ------------------ |
-| shell    | native pty         |
-| backend  | Rust + Tauri       |
-| frontend | React + TypeScript |
-| styling  | CSS (no framework) |
+| layer    | tech                        |
+| -------- | --------------------------- |
+| shell    | `xterm.js` & `portable-pty` |
+| backend  | Rust + Tauri                |
+| frontend | React + TypeScript          |
+| styling  | CSS (no framework)          |
 
 ## `integrations` _(planned)_
 
