@@ -11,8 +11,12 @@ function TerminalView() {
     useEffect(() => {
         const term = new Terminal({
             fontFamily: '"DankMono Nerd Font Mono", monospace',
-            fontSize: 14,
+            fontSize: 16,
+            theme: {
+                background: '#11111B',
+            },
         });
+
         const fitAddon = new FitAddon();
 
         term.loadAddon(fitAddon);
@@ -44,7 +48,9 @@ function TerminalView() {
         };
     }, []);
 
-    return <div ref={containerRef} style={{ height: '100%', width: '100%' }} />;
+    return (
+        <div className="terminal" ref={containerRef} style={{ height: '100%', width: '100%' }} />
+    );
 }
 
 export default TerminalView;
