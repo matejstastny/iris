@@ -12,6 +12,7 @@
         "**/target": true,
         "**/src-tauri/target": true,
         "**/node_modules": true,
-        "**/.git": true
+        "**/.git": true,
+        "dist": true
     }
 }
